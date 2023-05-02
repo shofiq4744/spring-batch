@@ -35,7 +35,6 @@ public class SpringBatchConfig {
 
     private final JobBuilderFactory jobBuilderFactory;
     private final StepBuilderFactory stepBuilderFactory;
-    private final CustomerRepository customerRepository;
     private final CustomWriter customerWriter;
 
     @Bean
@@ -96,8 +95,8 @@ public class SpringBatchConfig {
 
     @Bean
     public Step masterStep() {
-        return stepBuilderFactory.get("masterStep").
-                partitioner(slaveStep().getName(), partitioner())
+        return stepBuilderFactory.get("masterStep")
+                .partitioner(slaveStep().getName(), partitioner())
                 .partitionHandler(partitionHandler())
                 .build();
     }

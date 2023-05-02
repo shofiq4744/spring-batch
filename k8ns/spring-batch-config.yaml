@@ -1,0 +1,7 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: spring-batch-conf
+data:
+  host: postgres
+  name: postgres
